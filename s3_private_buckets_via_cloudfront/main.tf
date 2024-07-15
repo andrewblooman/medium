@@ -22,10 +22,6 @@ resource "aws_s3_bucket_website_configuration" "example" {
 EOF
 }
 
-resource "aws_cloudfront_origin_access_identity" "oai" {
-  comment = "OAI for S3 bucket"
-}
-
 resource "aws_s3_bucket_policy" "bucket_policy" {
   bucket = "[S3-BUCKET-NAME]" # Replace with your S3 bucket name
 
@@ -51,13 +47,11 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
   })
 }
 
-resource "aws_cloudfront_distribution" "cdn" {
+resource "aws_cloudfront_distribution" "medium" {
   origin {
-    domain_name = "${aws_s3_bucket.website_bucket.bucket}.s3.amazonaws.com"
-    origin_id   = aws_s3_bucket.website_bucket.id
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.oai.cloudfront_access_identity_path
-    }
+    domain_name              = "${aws_s3_bucket.website_bucket.bucket}.s3.amazonaws.com"
+    origin_id                = aws_s3_bucket.website_bucket.id
+    origin_access_control_id = aws_cloudfront_origin_access_control.medium_demo.id
   }
   enabled             = true
   is_ipv6_enabled     = true
@@ -87,4 +81,12 @@ resource "aws_cloudfront_distribution" "cdn" {
   viewer_certificate {
     cloudfront_default_certificate = true
   }
+}
+
+resource "aws_cloudfront_origin_access_control" "medium_demo" {
+  name                              = "medium_demo"
+  description                       = "Example Policy"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
 }
