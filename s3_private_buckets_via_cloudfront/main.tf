@@ -1,18 +1,15 @@
 resource "aws_s3_bucket" "website_bucket" {
-  bucket = "your-bucket-name"  # Replace with a unique bucket name
+  bucket = "your-bucket-name" # Replace with a unique bucket name
 }
 
 resource "aws_s3_bucket_website_configuration" "example" {
   bucket = aws_s3_bucket.website_bucket.bucket
-
   index_document {
     suffix = "index.html"
   }
-
   error_document {
     key = "error.html"
   }
-
   routing_rules = <<EOF
 [{
     "Condition": {
@@ -30,7 +27,7 @@ resource "aws_cloudfront_origin_access_identity" "oai" {
 }
 
 resource "aws_s3_bucket_policy" "bucket_policy" {
-  bucket = "[S3-BUCKET-NAME]"  # Replace with your S3 bucket name
+  bucket = "[S3-BUCKET-NAME]" # Replace with your S3 bucket name
 
   policy = jsonencode({
     "Version" : "2008-10-17",
@@ -43,10 +40,10 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
           "Service" : "cloudfront.amazonaws.com"
         },
         "Action" : "s3:GetObject",
-        "Resource" : "arn:aws:s3:::[S3-BUCKET-NAME]/*",  # Replace with your S3 bucket name
+        "Resource" : "arn:aws:s3:::[S3-BUCKET-NAME]/*", # Replace with your S3 bucket name
         "Condition" : {
           "StringEquals" : {
-            "AWS:SourceArn" : "arn:aws:cloudfront::[ACCOUNT-ID]:distribution/[DISTRIBUTION-ID]"  # Replace with your account ID and distribution ID
+            "AWS:SourceArn" : "arn:aws:cloudfront::[ACCOUNT-ID]:distribution/[DISTRIBUTION-ID]" # Replace with your account ID and distribution ID
           }
         }
       }
