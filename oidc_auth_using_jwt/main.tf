@@ -29,7 +29,7 @@ EOF
 
   name = "gitlab_cicd_oidc"
   managed_policy_arns = [
-    "arn:aws:iam::696240794375:role/aws-service-role/ssm.amazonaws.com/AWSServiceRoleForAmazonSSM"
+    "POLICY_ARN"
   ]
 }
 
