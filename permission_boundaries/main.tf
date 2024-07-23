@@ -67,7 +67,7 @@ resource "aws_iam_policy" "developers_permissions_boundary" {
           "iam:CreateUser",
           "iam:CreateAccessKey"
         ],
-        "Resource" : "arn:aws:iam::${var.account_id}:policy/DevelopersPermissionsBoundary"
+        "Resource" : "*"
       },
       {
         "Sid" : "AllowRoleCreationWithAttachedPermissionsBoundary",
