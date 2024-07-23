@@ -1,3 +1,5 @@
 .terraform
 .dccache
 .terraform.lock.hcl
+.tftstate
+.backup
