@@ -64,8 +64,6 @@ resource "aws_iam_policy" "developers_permissions_boundary" {
         "Sid" : "DenyIAMUsersAndKeys",
         "Effect" : "Deny",
         "Action" : [
-          "iam:CreatePolicy",
-          "iam:DeletePolicy",
           "iam:CreateUser",
           "iam:CreateAccessKey"
         ],
