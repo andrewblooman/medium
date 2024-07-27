@@ -5,5 +5,15 @@ variable "bucket_name" {
 
 variable "organization_id" {
   type    = string
-  default = "value"
+  default = "INSERT ORG ID"
+}
+
+variable "account_id" {
+  type    = string
+  default = "INSERT ACCOUNT ID"
+}
+
+variable "region" {
+  type    = string
+  default = "eu-west-1"
 }
