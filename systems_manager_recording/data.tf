@@ -1,14 +1,14 @@
 data "aws_vpc" "main" {
   filter {
     name   = "tag:Name"
-    values = ["common-tooling-vpc"]
+    values = ["INSERT VPC NAME"]
   }
 }
 
 data "aws_subnet" "subnet" {
   filter {
     name   = "tag:Name"
-    values = ["common-tooling-subnet-private1-eu-west-1a"]
+    values = ["INSERT SUBNET NAME"]
   }
 }
 
