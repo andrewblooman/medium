@@ -5,3 +5,6 @@
 
 - Making S3 Buckets Private with CloudFront and OAC
 - Deploy Third Party Authentication with OIDC/JWT
+- OpenCTI for Threat Intelligence
+- Permission Boundaries
+- Session Manager Recordings
