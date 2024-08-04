@@ -8,3 +8,4 @@
 - OpenCTI for Threat Intelligence
 - Permission Boundaries
 - Session Manager Recordings
+- IMDSV2 Guidance
