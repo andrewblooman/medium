@@ -66,7 +66,7 @@ resource "aws_iam_policy" "session_manager_recording_policy" {
         "kms:GenerateDataKey*"
       ],
       "Resource": [
-        "arn:aws:kms:eu-west-1:${aws_kms_key.log_key.arn}"
+        "${aws_kms_key.log_key.arn}"
       ]
     },
         {
