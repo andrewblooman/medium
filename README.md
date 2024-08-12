@@ -9,3 +9,12 @@
 - Permission Boundaries
 - Session Manager Recordings
 - IMDSV2 Guidance
+- Pi-Hole Demo
+
+## Upcoming
+
+- Code Scanning
+- Golden Image Pipeline
+- Immutable Infrastructure
+- Service Control Policies
+- MISP Threat Intel Feeds
