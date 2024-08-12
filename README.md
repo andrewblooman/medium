@@ -1,6 +1,9 @@
 # Examples and samples from Medium Articles
 [Medium Profile](https://medium.com/@andyblooman)
 
+[LinkedIn Profile](https://www.linkedin.com/in/andrewblooman/)
+
+
 ## Included Projects
 
 - Making S3 Buckets Private with CloudFront and OAC
