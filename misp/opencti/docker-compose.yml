@@ -11,9 +11,9 @@ services:
       - CONNECTOR_SCOPE=misp
       - CONNECTOR_LOG_LEVEL=error
       - CONNECTOR_EXPOSE_METRICS=false
-      - MISP_URL=https://192.168.1.9 # Required
+      - MISP_URL=https://MISP_URL # Required
       - MISP_REFERENCE_URL= # Optional, will be used to create external reference to MISP event (default is "url")
-      - MISP_KEY=We6qmcgiXlVMFxbDdxIi7k7sdtMKSDI9fiqhdjd0 # Required
+      - MISP_KEY=MISP_API_TOKEN # Required
       - MISP_SSL_VERIFY=false # Required
       - MISP_DATETIME_ATTRIBUTE=timestamp # Required, filter to be used in query for new MISP events
       - MISP_DATE_FILTER_FIELD=timestamp # Required, field to filter on date
@@ -29,7 +29,7 @@ services:
       - MISP_ENFORCE_WARNING_LIST=false # Optional, enforce warning list in MISP queries
       - MISP_REPORT_TYPE=misp-event # Optional, report_class if creating report for event
       - MISP_IMPORT_FROM_DATE=2000-01-01 # Required, import all event from this date
-      - MISP_IMPORT_TAGS=opencti:import,type:osint # Optional, list of tags used for import events
+      - MISP_IMPORT_TAGS=opencti:import,type:osint,tlp:white,type:OSINT,veris:action:social:variety="Phishing",tlp:green # Optional, list of tags used for import events
       - MISP_IMPORT_TAGS_NOT= # Optional, list of tags to not include
       - MISP_IMPORT_CREATOR_ORGS= # Optional, only import events created by those orgs (put the identifiers here)
       - MISP_IMPORT_CREATOR_ORGS_NOT= # Optional, do not import events created by those orgs (put the identifiers here)
