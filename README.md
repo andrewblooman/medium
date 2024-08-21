@@ -13,6 +13,7 @@
 - Session Manager Recordings
 - IMDSV2 Guidance
 - Pi-Hole Demo
+- MISP Threat Intel Feeds
 - ChatGPT vs Snyk Code scanning of S3 Bucket
 
 ## Upcoming
@@ -21,4 +22,3 @@
 - Golden Image Pipeline
 - Immutable Infrastructure
 - Service Control Policies
-- MISP Threat Intel Feeds
