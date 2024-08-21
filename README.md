@@ -13,6 +13,7 @@
 - Session Manager Recordings
 - IMDSV2 Guidance
 - Pi-Hole Demo
+- ChatGPT vs Snyk Code scanning of S3 Bucket
 
 ## Upcoming
 
