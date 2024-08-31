@@ -4,4 +4,7 @@ resource "aws_flow_log" "vpc_flow_log" {
   log_destination_type = "cloud-watch-logs"
   traffic_type         = "ALL"
   vpc_id               = data.aws_vpc.main.id
+  tags = {
+    Name = "VPC Flow Log"
+  }
 }
