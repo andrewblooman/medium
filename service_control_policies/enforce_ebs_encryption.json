@@ -1,0 +1,7 @@
+{
+    "Effect": "Deny",
+    "Action": [
+      "ec2:DisableEbsEncryptionByDefault"
+    ],
+    "Resource": "*"
+  }
