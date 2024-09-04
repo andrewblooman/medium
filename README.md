@@ -13,9 +13,12 @@
 - Pi-Hole Demo
 - MISP Threat Intel Feeds
 - ChatGPT vs Snyk Code scanning of S3 Bucket
+- VPC Flow Log Analysis
+- Service Control Policies
+- YETI Threat Intel Platform
+- ELK Stack on Docker
 
 ## Upcoming
 - Code Scanning
 - Golden Image Pipeline
 - Immutable Infrastructure
-- Service Control Policies

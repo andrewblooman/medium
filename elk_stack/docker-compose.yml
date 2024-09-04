@@ -1,0 +1,55 @@
+version: '3.8'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+    container_name: elasticsearch-node
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    networks:
+      - es_network
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.15.0
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200 # Point Kibana to the Elasticsearch node 
+    ports:
+      - "5601:5601" # Expose Kibana on port 5601
+    networks:
+      - es_network
+    depends_on:
+      - elasticsearch # Ensure Elasticsearch starts before Kibana
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.15.0
+    container_name: logstash
+    volumes:
+      - logstash_config:/usr/share/logstash/config # Mount the volume with Logstash configuration
+      - logstash_pipeline:/usr/share/logstash/pipeline # Mount the volume for pipeline configuration
+    ports:
+      - "1514:1514/udp" # Syslog input
+    environment:
+      - xpack.monitoring.enabled=false
+    networks:
+      - es_network
+    depends_on:
+      - elasticsearch
+
+volumes:
+  es_data:
+    driver: local
+  logstash_config:
+    driver: local
+  logstash_pipeline:
+    driver: local
+
+networks:
+  es_network:
+    driver: bridge

@@ -1,0 +1,70 @@
+version: '3.3'
+services:
+
+  frontend:
+    container_name: yeti-frontend
+    build:
+      dockerfile: ./frontend/Dockerfile
+    image: yetiplatform/yeti-frontend:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - api
+
+  api:
+    container_name: yeti-api
+    image: yetiplatform/yeti:latest
+    build:
+      dockerfile: ./yeti/Dockerfile
+    env_file:
+      - ${YETI_DOCKER_ENVFILE}
+    entrypoint:
+      - /docker-entrypoint.sh
+    command: ["webserver"]
+    ports:
+      - 8001:8000
+    depends_on:
+      - redis
+      - arangodb
+    volumes:
+      - yeti-exports:/opt/yeti/exports
+
+  tasks:
+    container_name: yeti-tasks
+    image: yetiplatform/yeti:latest
+    build:
+      dockerfile: ./yeti/Dockerfile
+    env_file:
+      - ${YETI_DOCKER_ENVFILE}
+    command: ['tasks']
+    depends_on:
+      - redis
+      - arangodb
+      - api
+    volumes:
+      - yeti-exports:/opt/yeti/exports
+
+
+  redis:
+    container_name: yeti-redis
+    image: redis:latest
+
+  arangodb:
+    container_name: yeti-arangodb
+    image: arangodb:3.11.8
+    environment:
+      - ARANGO_ROOT_PASSWORD=
+    volumes:
+      - yeti-db:/var/lib/arangodb3
+
+networks:
+  default:
+    name: yeti_network
+
+volumes:
+  yeti-exports:
+    driver: local
+  yeti-db:
+    driver: local
